@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { Observable, throwError } from 'rxjs';
 import {
+	AccessToken,
 	CapacitorFirebaseAuthPlugin,
 	FacebookSignInResult,
 	GoogleSignInResult,
@@ -194,3 +195,18 @@ export const cfaSignOut = (): Observable<void> => {
 		});
 	});
 };
+
+
+/**
+ * Call Facebook SDK methods to get current acess token
+ */
+export const cfaGetFacebookCurrentToken = (appId: string = null): Observable<AccessToken> => {
+	return new Observable(observer => {
+		plugin.getFacebookCurrentToken(appId).then((r) => {
+			observer.next(r);
+			observer.complete();
+		}).catch((err) => {
+			observer.error(err);
+		});
+	});
+}

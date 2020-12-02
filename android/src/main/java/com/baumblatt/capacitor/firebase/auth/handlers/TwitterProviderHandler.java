@@ -98,6 +98,11 @@ public class TwitterProviderHandler implements ProviderHandler, OnSuccessListene
     }
 
     @Override
+    public String getCurrentToken() {
+        return "";
+    }
+
+    @Override
     public void fillResult(AuthCredential credential, JSObject jsResult) {
         if (credential != null) {
             jsResult.put("idToken", this.getCredentialParts(credential, "getAccessToken"));

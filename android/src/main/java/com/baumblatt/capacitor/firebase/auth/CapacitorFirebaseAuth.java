@@ -125,6 +125,16 @@ public class CapacitorFirebaseAuth extends Plugin {
     }
 
     @PluginMethod()
+    public void getFacebookCurrentToken(PluginCall call) {
+        ProviderHandler provider = this.providerHandlers.get(getContext().getString(R.string.facebook_provider_id));
+        if (provider.isAuthenticated()) {
+            JSObject ret = new JSObject();
+            ret.put("accessToken", provider.getCurrentToken());
+            call.resolve(ret);
+        }
+    }
+
+    @PluginMethod()
     public void signOut(PluginCall call) {
         // sing out from providers
         for (ProviderHandler providerHandler : this.providerHandlers.values()) {

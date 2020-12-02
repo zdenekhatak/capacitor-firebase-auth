@@ -10,6 +10,7 @@ declare module "@capacitor/core" {
 export interface CapacitorFirebaseAuthPlugin {
   signIn(options: {providerId: string, data?: SignInOptions}): Promise<SignInResult>;
   signOut(options: {}): Promise<void>;
+  getFacebookCurrentToken(appId: string | null): Promise<AccessToken>;
 }
 
 export class GoogleSignInResult{
@@ -44,3 +45,7 @@ export interface PhoneSignInOptions {
 }
 
 export type SignInOptions = PhoneSignInOptions;
+
+export interface AccessToken {
+  accessToken: string
+}

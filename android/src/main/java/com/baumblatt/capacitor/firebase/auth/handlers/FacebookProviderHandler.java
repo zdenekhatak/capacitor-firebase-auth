@@ -89,6 +89,12 @@ public class FacebookProviderHandler implements ProviderHandler {
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public String getCurrentToken() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        return accessToken != null ? accessToken.getToken() : "";
+    }
+
 
     @Override
     public boolean isAuthenticated() {

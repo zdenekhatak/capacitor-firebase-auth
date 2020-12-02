@@ -19,11 +19,11 @@ class GoogleProviderHandler: NSObject, ProviderHandler, GIDSignInDelegate {
         GIDSignIn.sharedInstance().presentingViewController = self.plugin?.bridge.viewController
 
         let permissions = self.plugin?.getConfigValue("permissions") as? [String:Any] ?? [:]
-        
+
         if let scopes = permissions["google"] as? [String] {
             GIDSignIn.sharedInstance().scopes = scopes;
         }
-        
+
         NotificationCenter.default
             .addObserver(self, selector: #selector(handleOpenUrl(_ :)), name: Notification.Name(CAPNotifications.URLOpen.name()), object: nil)
     }
@@ -68,6 +68,10 @@ class GoogleProviderHandler: NSObject, ProviderHandler, GIDSignInDelegate {
 
     func isAuthenticated() -> Bool {
         return GIDSignIn.sharedInstance()?.currentUser != nil
+    }
+
+    func getCurrentToken() -> String {
+        return ""
     }
 
     func fillResult(credential: AuthCredential?, data: PluginResultData) -> PluginResultData {

@@ -134,6 +134,11 @@ public class PhoneProviderHandler implements ProviderHandler {
     }
 
     @Override
+    public String getCurrentToken() {
+        return "";
+    }
+
+    @Override
     public void fillResult(AuthCredential auth, JSObject jsUser) {
         jsUser.put("verificationId", this.mVerificationId);
         jsUser.put("verificationCode", this.mVerificationCode);
