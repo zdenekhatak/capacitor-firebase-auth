@@ -13,7 +13,7 @@
 	"author": "Bernardo Baumblatt",
 	"license": "MIT",
 	"dependencies": {
-		"@capacitor/core": "latest",
+		"@capacitor/core": "latest"
 	},
 	"devDependencies": {
 		"rimraf": "^3.0.0",
