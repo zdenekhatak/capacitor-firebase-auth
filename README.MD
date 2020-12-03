@@ -11,27 +11,27 @@ The plugin supports Google, Twitter, Facebook and Phone providers in Android and
 
 | Platform   |   Google   |  Facebook | Twitter   | Phone     | Apple     |
 |:-----------|:----------:|:---------:|:---------:|:---------:|:---------:|
-| Android    |  ✅  |  ✅  |  ✅  |  ✅  |  🧠  | 
-| iOS        |  ✅  |  ✅  |  ✅  |  ✅  |  🧠  | 
-| Web        |  ✅  |  ✅  |  ✅  |  🧠  |  🧠  | 
+| Android    |  ✅  |  ✅  |  ✅  |  ✅  |  🧠  |
+| iOS        |  ✅  |  ✅  |  ✅  |  ✅  |  🧠  |
+| Web        |  ✅  |  ✅  |  ✅  |  🧠  |  🧠  |
 
-✅ - Ready  
-🚧 - Work in progress  
-🧠 - Thinking about, date to be defined  
+✅ - Ready
+🚧 - Work in progress
+🧠 - Thinking about, date to be defined
 
 ## Important notes for upgrading between minor or major versions.
 
 #### from 2.2.x to 2.3.x
-> Requires Capacitor Framework v2.2.1 or newer. This is another episode of the Capacitor Framework braking changes 
+> Requires Capacitor Framework v2.2.1 or newer. This is another episode of the Capacitor Framework braking changes
 > on Android platform (com.getcapacitor.Config, now com.getcapacitor.CapConfig).
 
-> Really sorry about braking changes in minor release, but I want to follow major version of the Capacitor Framework. 
+> Really sorry about braking changes in minor release, but I want to follow major version of the Capacitor Framework.
 
-#### from 2.0.x to 2.2.x 
+#### from 2.0.x to 2.2.x
 > You need to use version 2.2.0 of the Capacitor Framework due braking changes on Android platform (com.getcapacitor.Config)
 
 #### from 0.3.x to 2.0.0
-> Sorry about that, but there is no path to do it, I my case, me and my team decided to re-build the projects from scratch, this does not mean code 
+> Sorry about that, but there is no path to do it, I my case, me and my team decided to re-build the projects from scratch, this does not mean code
 > rewrite, just a project, configurations and build. The good news is, there is no change on Typescript/Javascript/Java/Swift facades.
 
 > Anyway, you can make a try with Capacitor Framework update instructions:
@@ -57,8 +57,8 @@ If you see the message above, please use `esModuleInterop=true` in your  `tsconf
 ## Next steps
 
 1. Support for Apple provider
-2. Email/Password Provider 
-> Should we do this? It's very simple to authenticate on WebView without any plugin. 
+2. Email/Password Provider
+> Should we do this? It's very simple to authenticate on WebView without any plugin.
 > For awhile, waiting a good reason to do it. (track interest on Issue #24)
 
 ### How to Install
@@ -69,8 +69,8 @@ Install the plugin into your Capacitor project with npm.
 npm install --save capacitor-firebase-auth
 ```
 
-> Don't forget to run `npx cap sync` once after the installation to propagate the plugin to native projects. 
- 
+> Don't forget to run `npx cap sync` once after the installation to propagate the plugin to native projects.
+
 ### How to Config
 
 ### The minimal version of some peer dependencies that breaks with previous versions
@@ -82,6 +82,7 @@ npm install --save capacitor-firebase-auth
 ## Capacitor Plugins
 
 1. In file `capacitor.config.json` config the providers list, language code and native authentication as desired
+
     ```
     [...]
       "plugins": {
@@ -96,8 +97,9 @@ npm install --save capacitor-firebase-auth
       }
     [...]
     ```
+
     > Note: `nativeAuth` is a feature supported for Google, Twitter and Facebook (not Phone) to sign the user on native layer too.
-    >> This is useful if you need to handle any feature provided by another plugin that needs authentication.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+    >> This is useful if you need to handle any feature provided by another plugin that needs authentication.
 
 2. In file `android/app/src/main/java/.../MainActivity.java` add the reference to the Capacitor Firebase Auth plugin inside the Bridge initialization.
     ```
@@ -111,7 +113,7 @@ npm install --save capacitor-firebase-auth
     }});
     [...]
     ```
-    
+
 3. For Typescript users, please, review your `tsconfig.json` and ensure that you are using `esModuleInterop=true`.
 
 ## Firebase
@@ -143,14 +145,15 @@ npm install --save capacitor-firebase-auth
 1. Enable Google Sign-In in the Firebase console:
     * In the [Firebase console](https://console.firebase.google.com/), open the **Auth** section.
     * On the **Sign in method** tab, enable the **Google** sign-in method and click **Save**.
-     
+
 #### Google Android specific configurations
-    
+
 1. If you haven't yet specified your app's SHA-1 fingerprint, do so from the [Settings page](https://console.firebase.google.com/project/_/settings/general/) of the Firebase console. See [Authenticating Your Client](https://developers.google.com/android/guides/client-auth) for details on how to get your app's SHA-1 fingerprint.
 
 #### Google iOS specific configurations
 
 1. Add custom URL schemes to your Xcode project:
+
     * Open your project configuration: double-click the project name in the left tree view. Select your app from the **TARGETS** section, then select the **Info** tab, and expand the **URL Types** section.
     * Click the **+** button, and add a `URL scheme` for your reversed client ID. To find this value, open the `GoogleService-Info.plist` configuration file, and look for the `REVERSED_CLIENT_ID` key. Copy the value of that key, and paste it into the **URL Schemes** box on the configuration page. Leave the other fields blank.
 
@@ -172,7 +175,7 @@ Since that Apple using Push Notification service (APNs). You need to have `.p8` 
 #### Twitter Android and iOS specific configurations
 
 1. There isn't any specific configuration on Android and iOs native projects because the use of firebase OAuthProvider.
-> Since version 2.0.0 this plugin does not use Twitter Kit anymore, following implementation reference of Firebase Documentation.      
+> Since version 2.0.0 this plugin does not use Twitter Kit anymore, following implementation reference of Firebase Documentation.
 
 ## Facebook
 
@@ -184,23 +187,23 @@ Since that Apple using Push Notification service (APNs). You need to have `.p8` 
     * On the **Sign in method** tab, enable the **Facebook** sign-in method and specify the **App ID** and **App Secret** you got from Facebook.
     * Then, make sure your **OAuth redirect URI** (e.g. _my-app-12345.firebaseapp.com/__/auth/handler_) is listed as one of your OAuth redirect URIs in your Facebook app's settings page on the  [Facebook for Developers](https://developers.facebook.com/) site in the **Product Settings** > **Facebook Login** config.
 
-#### Facebook Android specific configurations 
+#### Facebook Android specific configurations
 
 1. Add the dependency for **Facebook SDK** to your app-level build.gradle file:
     ```
     implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
     ```
 2. In file `android/app/src/main/AndroidManifest.xml`, add the following XML elements under `<manifest><application>` :
-   
+
    ```xml
    <meta-data android:name="com.facebook.sdk.ApplicationId"
        android:value="@string/facebook_app_id"/>
-   
+
    <activity
        android:name="com.facebook.FacebookActivity"
        android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
        android:label="@string/app_name" />
-   
+
    <activity
        android:name="com.facebook.CustomTabActivity"
        android:exported="true">
@@ -212,7 +215,7 @@ Since that Apple using Push Notification service (APNs). You need to have `.p8` 
        </intent-filter>
    </activity>
    ```
-   
+
 3. In file `android/app/src/main/res/values/ids.xml` add the following lines :
     ```xml
     <string name="facebook_app_id">[APP_ID]</string>
@@ -236,7 +239,7 @@ Since that Apple using Push Notification service (APNs). You need to have `.p8` 
         <string>[APP_NAME]</string>
         [...]
     </dict>
-    </plist>    
+    </plist>
     ```
 
 2. Add custom URL schemes to your Xcode project:
@@ -261,19 +264,19 @@ Since that Apple using Push Notification service (APNs). You need to have `.p8` 
     Facebook SDK
     ```
       import FBSDKCoreKit
-    
+
       ...
-    
+
       func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         // Called when the app was launched with a url. Feel free to add additional processing here,
         // but if you want the App API to support tracking app url opens, make sure to keep this call
-        
+
         if let scheme = url.scheme, let host = url.host {
             if scheme == "fb\(String(describing: Settings.appID))" && host == "authorize" {
                 return ApplicationDelegate.shared.application(app, open: url, options: options)
             }
         }
-        
+
         return CAPBridge.handleOpenUrl(url, options)
       }
     ```
@@ -291,7 +294,7 @@ import {User} from 'firebase/app'
 import {cfaSignIn} from 'capacitor-firebase-auth';
 
 cfaSignIn('google.com').subscribe(
-	(user: User) => console.log(user.displayName);
+    (user: User) => console.log(user.displayName);
 )
 ```
 
@@ -299,7 +302,7 @@ cfaSignIn('google.com').subscribe(
 ```typescript
  import {cfaSignIn, mapUserToUserInfo} from 'capacitor-firebase-auth';
  import {UserInfo} from 'firebase/app';
- 
+
  cfaSignIn('google.com').pipe(
  	mapUserToUserInfo(),
  ).subscribe(
@@ -317,13 +320,23 @@ import {cfaSignOut} from 'capacitor-firebase-auth';
 cfaSignOut().subscribe()
 ```
 
+#### Get Facebook Access Token
+
+```typescript
+import { cfaGetFacebookCurrentToken, AccessToken } from 'capacitor-firebase-auth';
+
+//[...]
+
+cfaGetFacebookCurrentToken().subscribe((r: AccessToken) => /* current Facebook Access Token */)
+```
+
 #### Phone Verification
 
 ```typescript
 import {cfaSignIn} from 'capacitor-firebase-auth';
 
 cfaSignIn('phone', {phone: +16505551234}).subscribe(
-	user => console.log(user.phoneNumber)
+    user => console.log(user.phoneNumber)
 )
 ```
 > On iOS platform the observable will complete without emit (like EMPTY), follow the notifications below to sign on Firebase on Web Layer.
@@ -348,6 +361,7 @@ cfaSignInPhoneOnCodeReceived().subscribe(
 ```
 
 Suggestion for web authentication code to iOS, the ```verificationCode`` must be provided by the user, please see [Firebase documentation](https://firebase.google.com/docs/auth/web/phone-auth#sign-in-the-user-with-the-verification-code) for better options.
+
 ```typescript
 
 import * as firebase from 'firebase/app';
@@ -360,58 +374,58 @@ firebase.auth().signInWithCredential(credential);
 
 ## Alterantive use of Javascript facade
 
-This implementations of the javascript facade calls, return in addition to the Firebase user 
+This implementations of the javascript facade calls, return in addition to the Firebase user
 the information returned by the plugin from the native layer. For example, in Twitter sign in
-the token and secret are returned for use with Twitter User API. 
+the token and secret are returned for use with Twitter User API.
 
 > Specials thanks for [@go-u](https://github.com/go-u), by this suggested improvement, more information please see issue [#23](https://github.com/baumblatt/capacitor-firebase-auth/issues/23)!
 
-#### Sign in
+### Sign in
 
 ```typescript
 import * as firebase from 'firebase/app';
 import {cfaSignIn, SignInResult} from 'capacitor-firebase-auth/alternative'; import {SignInResult} from './definitions';
 
 cfaSignIn('twitter.com').subscribe(
-	({userCredential, result}: {userCredential: firebase.auth.UserCredential, result: SignInResult}) => {
-		console.log(userCredential.user.displayName);
-		console.log(result) // will print (providerId, idToken and secret)
-	}
+    ({userCredential, result}: {userCredential: firebase.auth.UserCredential, result: SignInResult}) => {
+        console.log(userCredential.user.displayName);
+        console.log(result) // will print (providerId, idToken and secret)
+    }
 )
 ```
 
-#### Sign In using direct twitter method
+### Sign In using direct twitter method
 
 ```typescript
 import * as firebase from 'firebase/app';
 import {cfaSignInTwitter, TwitterSignInResult} from 'capacitor-firebase-auth/alternative'; import {SignInResult} from './definitions';
 
 cfaSignInTwitter().subscribe(
-	({userCredential, result}: {userCredential: firebase.auth.UserCredential, result: TwitterSignInResult}) => {
-		console.log(userCredential.user.displayName);
-		console.log(result.idToken)
-	}
+    ({userCredential, result}: {userCredential: firebase.auth.UserCredential, result: TwitterSignInResult}) => {
+        console.log(userCredential.user.displayName);
+        console.log(result.idToken)
+    }
 )
 ```
 
-#### Sign In;  Use credentials for something; and map to UserInfo
+### Sign In;  Use credentials for something; and map to UserInfo
 
 ```typescript
-import {UserInfo} from 'firebase/app'; 
-import {cfaSignInTwitter, TwitterSignInResult, mapUserCredentialToUserInfo} from 'capacitor-firebase-auth/alternative'; 
+import {UserInfo} from 'firebase/app';
+import {cfaSignInTwitter, TwitterSignInResult, mapUserCredentialToUserInfo} from 'capacitor-firebase-auth/alternative';
 import {tap} from 'rxjs/operators';
 
 cfaSignInTwitter().pipe(
     tap(({result}:{result: TwitterSignInResult}) => console.log(result.idToken)),
     mapUserCredentialToUserInfo(),
 ).subscribe(
-	(user: UserInfo) => console.log(user.displayName)
+    (user: UserInfo) => console.log(user.displayName)
 )
 ```
 
 ## Known limitations
 
-#### Phone Verification
+### Phone Verification
 
 The user will be **signed in** only in web layer. This limitation is due to the **verification code** only works once. So, there is no way to authenticate the user in both layers (native and web) with just one SMS Code.
 
@@ -422,7 +436,8 @@ If you feel that project is useful, please, considered to buy me a beer through 
 Looking forward to enable FUNDING.yml soon.
 
 ## History
-- Fix the same issue as in PR #104 but now on 'twitter.provider.ts', maybe there was a change in firebase.js (be sure you are using at least 7.17.1).  
+
+- Fix the same issue as in PR #104 but now on 'twitter.provider.ts', maybe there was a change in firebase.js (be sure you are using at least 7.17.1).
 - PR #104 - Update 'facebook.provider.ts' (fix the grap of the access token), thanks to [hiepxanh](https://github.com/hiepxanh)
 - PR #99 - Unify firebase imports to recommended syntax, thanks to [Luca Ban](https://github.com/mesqueeb).
 - Remove the steps about `JavaVersion.VERSION_1_8` because the plugin does not use Twitter Toolkit anymore.
@@ -449,7 +464,7 @@ Looking forward to enable FUNDING.yml soon.
 - Configuration for when authenticate on native layer (default false to avoid double billing)
 - Fix the issue 1#: Default FirebaseApp is not initialized on Android platform
 - WIP: Phone verification sign in on iOS platform.
-- Phone verification sign in on Android platform. 
+- Phone verification sign in on Android platform.
 - How to install and config on Google, Twitter and Facebook.
 - Fix to work without Facebook configurations.
 - Better sign out implementation.

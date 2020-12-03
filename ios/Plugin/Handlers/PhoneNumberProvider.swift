@@ -76,6 +76,11 @@ class PhoneNumberProviderHandler: NSObject, ProviderHandler {
         return false
     }
 
+    func getCurrentToken() -> String {
+        return "";
+    }
+
+
     func fillResult(credential: AuthCredential?, data: PluginResultData) -> PluginResultData {
 
         var jsResult: PluginResultData = [:]

@@ -21,5 +21,7 @@ public interface ProviderHandler {
 
     boolean isAuthenticated();
 
+    String getCurrentToken();
+
     void fillResult(AuthCredential credential, JSObject jsResult);
 }
