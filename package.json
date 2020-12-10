@@ -35,7 +35,7 @@
 		"dist/",
 		"ios/",
 		"android/",
-		"CapacitorFirebaseAuth.podspec"
+		"ZdenekhatakCapacitorFirebaseAuth.podspec"
 	],
 	"keywords": [
 		"capacitor",
